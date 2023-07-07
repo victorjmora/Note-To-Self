@@ -6,7 +6,7 @@ const uuid = require('uuid');
 
 // initialize express and open a port
 const app = express();
-const port = 3000;
+const PORT = 3000;
 
 //middle ware
 app.use(express.urlencoded({ extended: true }));// middleware for url data
