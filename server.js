@@ -20,7 +20,7 @@ app.use(express.static('public')); // middleware for serving statis files from p
 
     // getting the notes from 'db.json' file and returning them json
     app.get('/api/notes', (req, res) => {
-        fs.readFile(_dirname + '/db/db.json', 'utf8', (err,data) => {
+        fs.readFile(__dirname + '/db/db.json', 'utf8', (err,data) => {
             if (err) throw err; // sayng if there was an error opening file file then throw error
             const notes = JSON.parse(data);
             res.json(notes);
@@ -30,11 +30,11 @@ app.use(express.static('public')); // middleware for serving statis files from p
     app.post('/api/notes', (req, res) => {
 const newNote = req.body; // getting a new note
 newNote.ID = uuid.v4(); // creating a unqiue ID for the note using uuid
-fs.readFile(_dirname + '/db/db.json', 'utf8', (err, data) => {
+fs.readFile(__dirname + '/db/db.json', 'utf8', (err, data) => {
     if (err) throw err;
     const notes = JSON.parse(data);
     notes.push(newNote);
-    fs.writeFile(_dirname + '/db/db.json', JSON.stringify(notes), (err) =>{
+    fs.writeFile(__dirname + '/db/db.json', JSON.stringify(notes), (err) =>{
         if (err) throw err;
         res.json(newNote);
     });
@@ -42,11 +42,11 @@ fs.readFile(_dirname + '/db/db.json', 'utf8', (err, data) => {
     });
 
     app.delete('/api/notes/:id', (req,res) => {
-        fs.readFile('_dirname + /db/db.json', 'utf8', (err, data) => {
+        fs.readFile('__dirname + /db/db.json', 'utf8', (err, data) => {
 if (err) throw err;
 let notes = JSON.parse(data);
 notes = notes.filter(note => note.id !== noteId);
-fs.writeFile(_dirname + '/db/db.json', JSON.stringify(notes), (err) => {
+fs.writeFile(__dirname + '/db/db.json', JSON.stringify(notes), (err) => {
     if (error) throw err;
     res.json({ id: noteId});
 });
