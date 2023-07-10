@@ -42,10 +42,13 @@ fs.readFile(__dirname + '/db/db.json', 'utf8', (err, data) => {
     });
 
     app.delete('/api/notes/:id', (req,res) => {
-        fs.readFile('__dirname + /db/db.json', 'utf8', (err, data) => {
+        const noteId = req.params.id;
+        fs.readFile(__dirname + '/db/db.json', 'utf8', (err, data) => {
+        //fs.readFile('__dirname + /db/db.json', 'utf8', (err, data) => {
 if (err) throw err;
 let notes = JSON.parse(data);
 notes = notes.filter(note => note.id !== noteId);
+if (err) throw err;
 fs.writeFile(__dirname + '/db/db.json', JSON.stringify(notes), (err) => {
     if (error) throw err;
     res.json({ id: noteId});
