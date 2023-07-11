@@ -178,10 +178,6 @@ if (window.location.pathname === '/notes') {
   newNoteBtn.addEventListener('click', handleNewNoteView);
   noteTitle.addEventListener('keyup', handleRenderSaveBtn);
   noteText.addEventListener('keyup', handleRenderSaveBtn);
-  const deleteNoteBtns = document.querySelectorAll('.delete-note');
-  deleteNoteBtns.forEach((button) => {
-    button.addEventListener('click', handleNoteDelete);
-  });
 }
 
 getAndRenderNotes();
